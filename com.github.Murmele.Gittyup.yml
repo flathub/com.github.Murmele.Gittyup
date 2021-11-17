@@ -39,5 +39,5 @@ modules:
     - install -Dm755 ../rsrc/Gittyup.iconset/icon_512x512.png /app/share/icons/hicolor/512x512/apps/gittyup.png
     sources:
     - type: git
-      url: git@github.com:flathub/com.github.Murmele.Gittyup.git
+      url: git@github.com:Murmele/Gittyup.git
       commit: 0d74358c6794b7de0d927c83ca8d83009711f1b1
