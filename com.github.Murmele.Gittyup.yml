@@ -40,4 +40,4 @@ modules:
     sources:
     - type: git
       url: https://github.com/Murmele/Gittyup.git
-      commit: 431300545b1f3a5bcfdf2259aca81f1e28e7c2b4
+      tag: gittyup_v1.0.0
