@@ -3,6 +3,7 @@ runtime: org.kde.Platform
 runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 command: Gittyup
+desktop-file-name-suffix: "" # used to create development version
 finish-args:
   - --socket=wayland
   - --socket=fallback-x11
