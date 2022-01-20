@@ -33,7 +33,7 @@ modules:
     - ". /usr/lib/sdk/golang/enable.sh;  export GOPATH=/app/go; export GOPROXY=direct; make" # in the make file the go command is used
     sources:
     - type: git
-      url: /home/martin/GIT/git-lfs/
+      url: https://github.com/git-lfs/git-lfs
       tag: v3.0.2
 
   - name: Gittyup
