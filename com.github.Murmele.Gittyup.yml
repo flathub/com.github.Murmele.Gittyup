@@ -2,6 +2,8 @@ app-id: com.github.Murmele.Gittyup
 runtime: org.kde.Platform
 runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang # //21.08 # to be able to install git-lfs
 command: Gittyup
 desktop-file-name-suffix: "" # used to create development version
 finish-args:
@@ -19,7 +21,21 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.Flatpak
 rename-icon: gittyup # Image will renamed to match the app-id konvention
+
+#"cleanup": [
+#"/go",
+#"/bin/scripts"
+#],
 modules:
+  - name: git-lfs
+    buildsystem: simple
+    build-commands:
+    - ". /usr/lib/sdk/golang/enable.sh;  export GOPATH=/app/go; export GOPROXY=direct; make" # in the make file the go command is used
+    sources:
+    - type: git
+      url: /home/martin/GIT/git-lfs/
+      tag: v3.0.2
+
   - name: Gittyup
     buildsystem: cmake-ninja
     config-opts: ["-DFLATPAK=ON"]
