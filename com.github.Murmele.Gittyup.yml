@@ -2,6 +2,8 @@ app-id: com.github.Murmele.Gittyup
 runtime: org.kde.Platform
 runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang # //21.08 # to be able to install git-lfs
 command: Gittyup
 desktop-file-name-suffix: "" # used to create development version
 finish-args:
@@ -19,7 +21,30 @@ finish-args:
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.Flatpak
 rename-icon: gittyup # Image will renamed to match the app-id konvention
+
+build-options:
+  append-path: "/usr/lib/sdk/golang/bin"
+
 modules:
+  - name: git-lfs
+    build-options:
+      env:
+        GO111MODULE: 'on'
+        GOFLAGS: "-mod=vendor"
+    buildsystem: simple
+    build-commands:
+    - go build -v -o ./bin/git-lfs ./git-lfs.go
+    - install -Dm755 -t ${FLATPAK_DEST}/bin/ ./bin/git-lfs
+    sources:
+    - type: archive
+      url: https://github.com/git-lfs/git-lfs/releases/download/v3.0.2/git-lfs-v3.0.2.tar.gz
+      sha256: 7179a357a0d0e7beaba217489f7f784ca8717035a5e3f1ee91ca7193ba3a35f3
+      x-checker-data:
+        type: json
+        url: https://api.github.com/repos/git-lfs/git-lfs/releases/latest
+        version-query: .tag_name | sub("^[vV]";"")
+        url-query: .assets[] | select(.label=="Source") | .browser_download_url
+
   - name: Gittyup
     buildsystem: cmake-ninja
     config-opts: ["-DFLATPAK=ON"]
