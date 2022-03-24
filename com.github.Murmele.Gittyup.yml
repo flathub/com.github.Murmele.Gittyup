@@ -25,10 +25,6 @@ rename-icon: gittyup # Image will renamed to match the app-id konvention
 build-options:
   append-path: "/usr/lib/sdk/golang/bin"
 
-#"cleanup": [
-#"/go",
-#"/bin/scripts"
-#],
 modules:
   - name: git-lfs
     build-options:
