@@ -5,7 +5,7 @@ sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.golang # //21.08 # to be able to install git-lfs
 command: Gittyup
-desktop-file-name-suffix: "" # used to create development version
+desktop-file-name-suffix: '' # used to create development version
 finish-args:
   - --socket=wayland
   - --socket=fallback-x11
@@ -23,47 +23,47 @@ finish-args:
 rename-icon: gittyup # Image will renamed to match the app-id konvention
 
 build-options:
-  append-path: "/usr/lib/sdk/golang/bin"
+  append-path: /usr/lib/sdk/golang/bin
 
 modules:
   - name: git-lfs
     build-options:
       env:
-        GO111MODULE: 'on'
-        GOFLAGS: "-mod=vendor"
+        GO111MODULE: on
+        GOFLAGS: -mod=vendor
     buildsystem: simple
     build-commands:
-    - go build -v -o ./bin/git-lfs ./git-lfs.go
-    - install -Dm755 -t ${FLATPAK_DEST}/bin/ ./bin/git-lfs
+      - go build -v -o ./bin/git-lfs ./git-lfs.go
+      - install -Dm755 -t ${FLATPAK_DEST}/bin/ ./bin/git-lfs
     sources:
-    - type: archive
-      url: https://github.com/git-lfs/git-lfs/releases/download/v3.0.2/git-lfs-v3.0.2.tar.gz
-      sha256: 7179a357a0d0e7beaba217489f7f784ca8717035a5e3f1ee91ca7193ba3a35f3
-      x-checker-data:
-        type: json
-        url: https://api.github.com/repos/git-lfs/git-lfs/releases/latest
-        version-query: .tag_name | sub("^[vV]";"")
-        url-query: .assets[] | select(.label=="Source") | .browser_download_url
+      - type: archive
+        url: https://github.com/git-lfs/git-lfs/releases/download/v3.1.2/git-lfs-v3.1.2.tar.gz
+        sha256: 5c9bc449068d0104ea124c25f596af16da85e7b5bf256bc544d8ce5f4fe231f2
+        x-checker-data:
+          type: json
+          url: https://api.github.com/repos/git-lfs/git-lfs/releases/latest
+          version-query: .tag_name | sub("^[vV]";"")
+          url-query: .assets[] | select(.label=="Source") | .browser_download_url
 
   - name: Gittyup
     buildsystem: cmake-ninja
-    config-opts: ["-DFLATPAK=ON"]
+    config-opts: [-DFLATPAK=ON]
     builddir: true
     build-commands:
-    - desktop-file-install --dir=/app/share/applications ../rsrc/linux/com.github.Murmele.Gittyup.desktop
-    - install -Dm755 ../rsrc/linux/com.github.Murmele.Gittyup.appdata.xml /app/share/appdata/com.github.Murmele.Gittyup.appdata.xml # one folder up, because of builddir: true
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_16x16.png /app/share/icons/hicolor/16x16/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_16x16@2x.png /app/share/icons/hicolor/16x16@2x/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_32x32.png /app/share/icons/hicolor/32x32/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_32x32@2x.png /app/share/icons/hicolor/32x32@2x/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_64x64.png /app/share/icons/hicolor/64x64/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_64x64@2x.png /app/share/icons/hicolor/64x64@2x/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_128x128.png /app/share/icons/hicolor/128x128/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_128x128@2x.png /app/share/icons/hicolor/128x128@2x/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_256x256.png /app/share/icons/hicolor/256x256/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_256x256@2x.png /app/share/icons/hicolor/256x256@2x/apps/gittyup.png
-    - install -Dm755 ../rsrc/Gittyup.iconset/icon_512x512.png /app/share/icons/hicolor/512x512/apps/gittyup.png
+      - desktop-file-install --dir=/app/share/applications ../rsrc/linux/com.github.Murmele.Gittyup.desktop
+      - install -Dm755 ../rsrc/linux/com.github.Murmele.Gittyup.appdata.xml /app/share/appdata/com.github.Murmele.Gittyup.appdata.xml # one folder up, because of builddir: true
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_16x16.png /app/share/icons/hicolor/16x16/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_16x16@2x.png /app/share/icons/hicolor/16x16@2x/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_32x32.png /app/share/icons/hicolor/32x32/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_32x32@2x.png /app/share/icons/hicolor/32x32@2x/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_64x64.png /app/share/icons/hicolor/64x64/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_64x64@2x.png /app/share/icons/hicolor/64x64@2x/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_128x128.png /app/share/icons/hicolor/128x128/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_128x128@2x.png /app/share/icons/hicolor/128x128@2x/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_256x256.png /app/share/icons/hicolor/256x256/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_256x256@2x.png /app/share/icons/hicolor/256x256@2x/apps/gittyup.png
+      - install -Dm755 ../rsrc/Gittyup.iconset/icon_512x512.png /app/share/icons/hicolor/512x512/apps/gittyup.png
     sources:
-    - type: git
-      url: https://github.com/Murmele/Gittyup.git
-      tag: gittyup_v1.0.0
+      - type: git
+        url: https://github.com/Murmele/Gittyup.git
+        tag: gittyup_v1.0.0
