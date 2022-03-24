@@ -28,13 +28,23 @@ rename-icon: gittyup # Image will renamed to match the app-id konvention
 #],
 modules:
   - name: git-lfs
+    build-options:
+      env:
+        GO111MODULE: 'on'
+        GOFLAGS: "-mod=vendor"
     buildsystem: simple
     build-commands:
-    - ". /usr/lib/sdk/golang/enable.sh;  export GOPATH=/app/go; export GOPROXY=direct; make" # in the make file the go command is used
+    - go build -v -o ./bin/git-lfs ./git-lfs.go
+    - install -Dm755 -t ${FLATPAK_DEST}/bin/ ./bin/git-lfs
     sources:
-    - type: git
-      url: https://github.com/git-lfs/git-lfs
-      tag: v3.0.2
+    - type: archive
+      url: https://github.com/git-lfs/git-lfs/releases/download/v3.0.2/git-lfs-v3.0.2.tar.gz
+      sha256: 7179a357a0d0e7beaba217489f7f784ca8717035a5e3f1ee91ca7193ba3a35f3
+      x-checker-data:
+        type: json
+        url: https://api.github.com/repos/git-lfs/git-lfs/releases/latest
+        version-query: .tag_name | sub("^[vV]";"")
+        url-query: .assets[] | select(.label=="Source") | .browser_download_url
 
   - name: Gittyup
     buildsystem: cmake-ninja
