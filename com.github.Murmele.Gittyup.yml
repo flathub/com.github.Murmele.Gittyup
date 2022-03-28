@@ -45,6 +45,16 @@ modules:
         version-query: .tag_name | sub("^[vV]";"")
         url-query: .assets[] | select(.label=="Source") | .browser_download_url
 
+  - name: git
+    buildsystem: simple
+    build-commands:
+    - install -Dm755 $(which git) ${FLATPAK_DEST}/bin/
+    - install -Dm755 $(which git-cvsserver) ${FLATPAK_DEST}/bin/
+    - install -Dm755 $(which git-receive-pack) ${FLATPAK_DEST}/bin/
+    - install -Dm755 $(which git-shell) ${FLATPAK_DEST}/bin/
+    - install -Dm755 $(which git-upload-archive) ${FLATPAK_DEST}/bin/
+    - install -Dm755 $(which git-upload-pack) ${FLATPAK_DEST}/bin/
+
   - name: Gittyup
     buildsystem: cmake-ninja
     config-opts: ["-DFLATPAK=ON"]
