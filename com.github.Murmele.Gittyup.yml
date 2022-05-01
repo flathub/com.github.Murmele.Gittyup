@@ -9,6 +9,7 @@ desktop-file-name-suffix: '' # used to create development version
 finish-args:
   - --socket=wayland
   - --socket=fallback-x11
+  - --device=dri
   - --share=network
   - --share=ipc
   - --filesystem=home
