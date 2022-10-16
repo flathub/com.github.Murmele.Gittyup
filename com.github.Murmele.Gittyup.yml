@@ -58,7 +58,7 @@ modules:
 
   - name: Gittyup
     buildsystem: cmake-ninja
-    config-opts: [-DFLATPAK=ON, -DGENERATE_APPDATA=ON]
+    config-opts: [-DFLATPAK=ON, -DGENERATE_APPDATA=ON, -DRESOURCES_INSTALL_DIR=/app/share/gittyup/Resources, -DDEBUG_OUTPUT=OFF]
     builddir: true
     build-commands:
       - desktop-file-install --dir=/app/share/applications ../rsrc/linux/com.github.Murmele.Gittyup.desktop
@@ -77,5 +77,5 @@ modules:
       - install -Dm755 ../rsrc/Gittyup.iconset/icon_512x512.png /app/share/icons/hicolor/512x512/apps/gittyup.png
     sources:
       - type: git
-        url: https://github.com/Murmele/Gittyup.git
-        tag: gittyup_v1.1.2
+        url: https://github.com/exactly-one-kas/Gittyup.git
+        branch: arch-test
