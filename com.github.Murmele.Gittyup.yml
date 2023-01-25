@@ -58,7 +58,7 @@ modules:
 
   - name: Gittyup
     buildsystem: cmake-ninja
-    config-opts: [-DFLATPAK=ON, -DGENERATE_APPDATA=ON, -DDISABLE_AUTOMATIC_UPDATE=ON]
+    config-opts: [-DFLATPAK=ON, -DGENERATE_APPDATA=ON, -DENABLE_UPDATE_OVER_GUI=OFF]
     builddir: true
     build-commands:
       - desktop-file-install --dir=/app/share/applications ../rsrc/linux/com.github.Murmele.Gittyup.desktop
