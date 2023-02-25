@@ -21,7 +21,7 @@ finish-args:
   - --talk-name=org.freedesktop.secrets
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.freedesktop.Flatpak
-rename-icon: Gittyup # Image will renamed to match the app-id konvention
+rename-icon: gittyup # Image will renamed to match the app-id konvention
 rename-desktop-file: Gittyup.desktop
 
 build-options:
