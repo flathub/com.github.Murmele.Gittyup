@@ -4,7 +4,7 @@ runtime-version: 5.15-21.08
 sdk: org.kde.Sdk
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.golang # //21.08 # to be able to install git-lfs
-command: Gittyup
+command: gittyup
 desktop-file-name-suffix: '' # used to create development version
 finish-args:
   - --socket=wayland
