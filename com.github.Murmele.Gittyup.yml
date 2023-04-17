@@ -65,4 +65,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/Murmele/Gittyup.git
-        tag: fc7ca5f642383ce67c557dd80366b8ecbae31599
+        tag: 1e5e00a1f0c3141d063f6b1ce1de08ea0bd64aa3
