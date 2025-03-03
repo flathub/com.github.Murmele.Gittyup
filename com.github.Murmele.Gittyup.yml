@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: 5.15-23.08
 sdk: org.kde.Sdk
 command: gittyup
-desktop-file-name-suffix: "" # used to create development version
+desktop-file-name-suffix: '' # used to create development version
 finish-args:
   - --socket=wayland
   - --socket=fallback-x11
@@ -45,8 +45,8 @@ modules:
           version-query: .tag_name
       - type: archive
         strip-components: 1
-        url: https://github.com/git-lfs/git-lfs/releases/download/v3.5.1/git-lfs-linux-arm64-v3.5.1.tar.gz
-        sha256: 4f8700aacaa0fd26ae5300fb0996aed14d1fd0ce1a63eb690629c132ff5163a9
+        url: https://github.com/git-lfs/git-lfs/releases/download/v3.6.1/git-lfs-linux-arm64-v3.6.1.tar.gz
+        sha256: 1c2720ff53528fbe769633d448d830aa7b682141e3c4f6a9f26b9cf3b2548d0a
         only-arches: [aarch64]
         x-checker-data:
           type: json
@@ -67,7 +67,8 @@ modules:
 
   - name: Gittyup
     buildsystem: cmake-ninja
-    config-opts: [-DCMAKE_BUILD_TYPE=Release, -DFLATPAK=ON, -DGENERATE_APPDATA=ON, -DENABLE_UPDATE_OVER_GUI=OFF, -DUSE_SYSTEM_OPENSSL:BOOL=ON]
+    config-opts: [-DCMAKE_BUILD_TYPE=Release, -DFLATPAK=ON, -DGENERATE_APPDATA=ON,
+      -DENABLE_UPDATE_OVER_GUI=OFF, -DUSE_SYSTEM_OPENSSL:BOOL=ON]
     builddir: true
     sources:
       - type: git
