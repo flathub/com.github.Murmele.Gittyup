@@ -87,4 +87,4 @@ modules:
     sources:
       - type: git
         url: https://github.com/Murmele/Gittyup.git
-        tag: gittyup_v2.0.0
+        tag: b314610ff7e3a8621b633d627fd7f232aa82a456 # 2.0.0 with a fix for the metainfo
