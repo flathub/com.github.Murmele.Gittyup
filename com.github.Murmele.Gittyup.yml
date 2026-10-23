@@ -3,7 +3,7 @@ runtime: org.kde.Platform
 runtime-version: 6.10
 sdk: org.kde.Sdk
 command: gittyup
-desktop-file-name-suffix: "" # used to create development version
+desktop-file-name-suffix: '' # used to create development version
 finish-args:
   - --socket=wayland
   - --socket=fallback-x11
@@ -34,8 +34,8 @@ modules:
     sources:
       - type: archive
         strip-components: 1
-        url: https://github.com/git-lfs/git-lfs/releases/download/v3.7.1/git-lfs-linux-amd64-v3.7.1.tar.gz
-        sha256: 1c0b6ee5200ca708c5cebebb18fdeb0e1c98f1af5c1a9cba205a4c0ab5a5ec08
+        url: https://github.com/git-lfs/git-lfs/releases/download/v3.8.1/git-lfs-linux-amd64-v3.8.1.tar.gz
+        sha256: e72cf723a4a660438862282e8aecf3885fc8123e88bfcad534cf6b941a354b75
         only-arches: [x86_64]
         x-checker-data:
           type: json
@@ -45,8 +45,8 @@ modules:
           version-query: .tag_name
       - type: archive
         strip-components: 1
-        url: https://github.com/git-lfs/git-lfs/releases/download/v3.7.1/git-lfs-linux-arm64-v3.7.1.tar.gz
-        sha256: 73a9c90eeb4312133a63c3eaee0c38c019ea7bfa0953d174809d25b18588dd8d
+        url: https://github.com/git-lfs/git-lfs/releases/download/v3.8.1/git-lfs-linux-arm64-v3.8.1.tar.gz
+        sha256: 67895dd77b63329796bc5efdd47b57f218e1f7b98717ebaf936a8238dbcaec0f
         only-arches: [aarch64]
         x-checker-data:
           type: json
@@ -82,7 +82,8 @@ modules:
 
   - name: Gittyup
     buildsystem: cmake-ninja
-    config-opts: [-DCMAKE_BUILD_TYPE=Release, -DFLATPAK=ON, -DGENERATE_APPDATA=ON, -DENABLE_UPDATE_OVER_GUI=OFF]
+    config-opts: [-DCMAKE_BUILD_TYPE=Release, -DFLATPAK=ON, -DGENERATE_APPDATA=ON,
+      -DENABLE_UPDATE_OVER_GUI=OFF]
     builddir: true
     sources:
       - type: git
